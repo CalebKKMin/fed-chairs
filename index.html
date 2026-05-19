@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>역대 미국 연방준비제도 의장 — 임기·환경·정책·평가</title>
+<title>미국 연방준비제도 의장 아카이브</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -67,167 +67,97 @@
     line-height: 1.7;
   }
 
-  .summary-box {
-    margin-top: 1.2rem;
-    padding: 1rem 1.2rem;
-    background: var(--bg2);
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    color: var(--text2);
-    line-height: 1.75;
-  }
-
-  .summary-box strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  /* Cards */
-  .chair-card {
-    background: var(--bg);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    margin-bottom: 12px;
-    overflow: hidden;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-
-  .chair-card:hover { border-color: var(--border2); }
-  .chair-card.open { border-color: var(--border2); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-
-  .chair-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 15px 18px;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .era-dot {
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 600;
-    flex-shrink: 0;
-    letter-spacing: -0.5px;
-  }
-
-  .chair-meta { flex: 1; min-width: 0; }
-  .chair-name { font-size: 15px; font-weight: 500; color: var(--text); }
-  .chair-term { font-size: 12px; color: var(--text2); margin-top: 2px; }
-
-  .chair-tag {
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 999px;
-    white-space: nowrap;
-    flex-shrink: 0;
-    font-weight: 500;
-  }
-
-  .chevron {
-    font-size: 18px;
-    color: var(--text3);
-    flex-shrink: 0;
-    transition: transform 0.25s;
-    line-height: 1;
-  }
-
-  .chair-card.open .chevron { transform: rotate(180deg); }
-
-  .chair-body {
-    display: none;
-    padding: 0 18px 18px;
+  .divider {
+    margin: 1.4rem 0 0;
+    border: none;
     border-top: 0.5px solid var(--border);
   }
 
-  .chair-card.open .chair-body { display: block; }
+  .view-list {
+    margin-top: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
 
-  .section-label {
+  .view-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text2);
+  }
+
+  .view-row .vnum {
     font-size: 11px;
     font-weight: 600;
     color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin: 16px 0 6px;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    min-width: 44px;
   }
 
-  .body-text {
-    font-size: 13.5px;
-    color: var(--text2);
-    line-height: 1.72;
+  .entry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
-  /* Rating bars */
-  .rating-bar {
+  @media (max-width: 520px) {
+    .entry-grid { grid-template-columns: 1fr; }
+  }
+
+  .entry-card {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 8px;
+    flex-direction: column;
+    text-decoration: none;
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.8rem 1.6rem;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
   }
 
-  .bar-label {
-    font-size: 12px;
+  .entry-card:hover {
+    border-color: var(--border2);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+
+  .entry-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text3);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .entry-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .entry-desc {
+    font-size: 13px;
     color: var(--text2);
-    min-width: 90px;
-  }
-
-  .bar-track {
+    line-height: 1.7;
     flex: 1;
-    height: 5px;
-    border-radius: 3px;
-    background: var(--bg3);
-    overflow: hidden;
   }
 
-  .bar-fill {
-    height: 100%;
-    border-radius: 3px;
-    transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
-  }
-
-  .bar-score {
+  .entry-arrow {
+    display: inline-block;
+    margin-top: 16px;
     font-size: 12px;
     font-weight: 500;
-    color: var(--text);
-    min-width: 28px;
-    text-align: right;
+    color: var(--text3);
   }
 
-  /* Color chips */
-  .c1  { background: #EEF2FF; color: #3730A3; }
-  .c1t { background: #E0E7FF; color: #312E81; }
-  .c2  { background: #FEF3C7; color: #78350F; }
-  .c2t { background: #FDE68A; color: #713400; }
-  .c3  { background: #ECFDF5; color: #065F46; }
-  .c3t { background: #D1FAE5; color: #064E3B; }
-  .c4  { background: #FFF7ED; color: #9A3412; }
-  .c4t { background: #FED7AA; color: #7C2D12; }
-  .c5  { background: #F5F3FF; color: #4C1D95; }
-  .c5t { background: #EDE9FE; color: #3B0764; }
-  .c6  { background: #FDF2F8; color: #831843; }
-  .c6t { background: #FCE7F3; color: #701A75; }
-  .c7  { background: #ECFEFF; color: #164E63; }
-  .c7t { background: #CFFAFE; color: #0E7490; }
-  .c8  { background: #F0FDF4; color: #14532D; }
-
-  @media (prefers-color-scheme: dark) {
-    .c1  { background: #1e1b4b; color: #a5b4fc; }
-    .c1t { background: #2e1065; color: #c4b5fd; }
-    .c2  { background: #451a03; color: #fcd34d; }
-    .c2t { background: #3b1200; color: #fbbf24; }
-    .c3  { background: #022c22; color: #6ee7b7; }
-    .c3t { background: #014737; color: #34d399; }
-    .c4  { background: #431407; color: #fdba74; }
-    .c4t { background: #7c2d12; color: #fb923c; }
-    .c5  { background: #2e1065; color: #c4b5fd; }
-    .c5t { background: #3b0764; color: #d8b4fe; }
-    .c6  { background: #500724; color: #f9a8d4; }
-    .c6t { background: #831843; color: #fbcfe8; }
-    .c7  { background: #083344; color: #67e8f9; }
-    .c7t { background: #0e7490; color: #a5f3fc; }
-    .c8  { background: #052e16; color: #86efac; }
+  .entry-card:hover .entry-arrow {
+    color: var(--text2);
   }
 
   .footer {
@@ -242,185 +172,31 @@
 <div class="page">
 
   <div class="page-header">
-    <h1>역대 미국 연방준비제도 의장</h1>
-    <p>임기 · 대내외 환경 · 주요 정책 · 업적 · 역사적 평가</p>
-    <div class="summary-box">
-      <strong>핵심 서사 네 가지 —</strong><br>
-      ① <strong>초창기 제도 형성(1~3대)</strong>: 해믈린·하딩·크리싱거 재임기는 연준이 조직을 갖추던 시기로, 의장 권한이 극히 제한적이었고 재무부·뉴욕 연방준비은행이 실권을 장악했다. 크리싱거의 방임이 대공황 버블 형성에 일조했다는 평가가 있다.<br>
-      ② <strong>연준 독립성의 굴곡</strong>: 마틴이 1951년 재무부로부터 독립을 되찾았지만 번스가 닉슨 압력에 굴복, 볼커가 정치적 반발을 무릅쓰고 금리 20%까지 올리며 독립성을 복원했다.<br>
-      ③ <strong>인플레이션과의 전쟁</strong>: 번스의 실패 → 볼커의 승리 → 그린스펀의 자만 → 파월의 재대응이라는 사이클이 반복된다.<br>
-      ④ <strong>평가의 시간차</strong>: 그린스펀처럼 '마에스트로'로 칭송받다 사후 재평가로 추락하는 사례가 있는 반면, 볼커처럼 당시 비판받았으나 역사적으로 최고 평가를 받는 역전도 있다.
+    <h1>미국 연방준비제도 의장 아카이브</h1>
+    <p>역대 미국 연방준비제도(Fed) 의장의 임기, 대내외 환경, 주요 정책, 역사적 평가를 정리한 아카이브입니다.</p>
+    <hr class="divider">
+    <div class="view-list">
+      <div class="view-row"><span class="vnum">VIEW 01</span> 의장별 상세 분석 — 초대~11대 전원, 상세 카드 + 평가 지표</div>
+      <div class="view-row"><span class="vnum">VIEW 02</span> 핵심 요약 정리 — 5대~11대(마틴~파월), 핵심 키워드 중심 요약 카드</div>
     </div>
   </div>
 
-  <div id="chairs-container"></div>
+  <div class="entry-grid">
+    <a href="chairs.html" class="entry-card">
+      <div class="entry-label">View 01 · 11명</div>
+      <div class="entry-title">의장별 상세 분석</div>
+      <div class="entry-desc">초대 해믈린부터 현 파월까지 11명. 시대적 환경·정책·업적·평가 지표를 카드 형식으로 상세 정리.</div>
+      <span class="entry-arrow">열기 →</span>
+    </a>
+    <a href="summary.html" class="entry-card">
+      <div class="entry-label">View 02 · 7명</div>
+      <div class="entry-title">핵심 요약 정리</div>
+      <div class="entry-desc">5대 마틴부터 11대 파월까지 7명. 핵심 평가 한마디와 키워드 중심으로 간결하게 정리.</div>
+      <span class="entry-arrow">열기 →</span>
+    </a>
+  </div>
 
-  <div class="footer">각 카드를 클릭하면 세부 내용이 펼쳐집니다 · Claude로 작성</div>
+  <div class="footer">Claude로 작성</div>
 </div>
-
-<script>
-const chairs = [
-  {
-    name: "찰스 해믈린 (Charles Hamlin)",
-    term: "1914–1916 (2년)", num: "1대",
-    color: "c2", tag: "연준 창설기", tagColor: "c2t",
-    env: "1913년 연방준비법(Federal Reserve Act) 제정으로 연준이 막 출범. 1차 세계대전 발발(1914)로 국제 금융 질서 급변. 금본위제 유지 중. 미국은 아직 참전 전이나 유럽 전쟁으로 무역·자본 흐름 교란. 윌슨 행정부.",
-    policy: "연준 초대 의장으로서 12개 지역 연방준비은행 체계 구축과 조직 정착에 주력. 실질적 정책 권한은 뉴욕 연방준비은행과 재무부에 집중되어 의장 권한은 매우 제한적. 전시 달러 안정 및 국채 소화 지원. 재할인율 정책을 통한 신용 조절 시도.",
-    achiev: "연준이라는 새로운 중앙은행 제도를 초기에 안착시킨 공헌. 단, 당시 연준 의장은 재무부 장관이 당연직 의장을 겸하는 구조였고, 해믈린은 사실상 '부의장' 성격의 역할. 현대적 의미의 통화정책 권한은 거의 없었음.",
-    eval: "연준 출범기의 행정적 정착에 기여했으나, 정책적 영향력은 극히 제한적. 역사적으로 독자적 평가보다 '제도 창설기'의 상징적 인물로 기록됨. 이후 연준 이사로 1936년까지 장기 재직.",
-    ratings: [["역사적 중요도", 55], ["통화정책 효과", 38], ["독립성 수호", 30]]
-  },
-  {
-    name: "윌리엄 하딩 (William Harding)",
-    term: "1916–1922 (6년)", num: "2대",
-    color: "c4", tag: "1차대전·전후 공황", tagColor: "c4t",
-    env: "미국의 1차 세계대전 참전(1917). 전시 경제 팽창과 전후 인플레이션 급등. 1920~21년 극심한 디플레이션·농업 공황. 윌슨·하딩(대통령) 행정부. 브레튼우즈 이전 금본위제 복귀 논의.",
-    policy: "전시 국채(리버티 본드) 소화 지원 위해 저금리 유지(재무부 압력). 전후 인플레이션 대응 위해 1920년 급격한 금리 인상 단행(재할인율 7%까지). 이 급격한 긴축이 1920~21년 심각한 경기침체·농업 공황 유발. 이후 금리 신속 인하로 경기 회복 기여.",
-    achiev: "전시~전후 격동기 연준 운영. 1920~21년 디플레이션 대응의 교훈은 이후 대공황 연구(버냉키 등)에 중요한 선례가 됨. 재무부 종속 하에서도 금리 정책의 경기조절 기능 최초 실험.",
-    eval: "전시 재정 지원 우선으로 독립적 통화정책 수행 불가. 1920년 급격한 긴축은 농업 부문에 큰 타격을 줬다는 비판. 그러나 당시 제도적 한계를 감안하면 과도한 책임 부과는 무리라는 시각도 있음.",
-    ratings: [["역사적 중요도", 58], ["통화정책 효과", 42], ["독립성 수호", 28]]
-  },
-  {
-    name: "대니얼 크리싱거 (Daniel Crissinger)",
-    term: "1923–1927 (4년)", num: "3대",
-    color: "c1", tag: "광란의 20년대", tagColor: "c1t",
-    env: "'광란의 20년대(Roaring Twenties)' — 주식 투기 붐, 소비 확장, 신용 팽창. 쿨리지 행정부. 하딩 대통령(동명이인)의 정치적 측근으로 임명. 유럽 금본위제 복귀 시도. 뉴욕 연방준비은행(벤저민 스트롱 총재)이 사실상 연준 실권 장악.",
-    policy: "뉴욕 연방준비은행 스트롱 총재에게 실질적 통화정책 결정권 위임. 저금리 기조 유지로 주식 투기 붐 방치. 1927년 금리 인하(유럽 금본위제 복귀 지원 목적) — 이후 일부 학자들은 이를 대공황 원인 중 하나로 지목. 전문성 부족으로 연준 내 영향력 미미.",
-    achiev: "사실상 부정적 유산이 더 큼. 주식 투기 버블 시기에 적절한 규제·긴축 실패. 재임 중 연준 독립성보다 정치적 임명의 폐해를 보여준 사례. 1927년 사임 후 대공황(1929)까지 약 2년의 공백기 과도기 역할.",
-    eval: "역대 최저 평가를 받는 의장 중 하나. 전문성·독립성 모두 결여. 대공황 전야의 버블 형성을 방치했다는 역사적 책임에서 자유롭지 못함. '정치적 보은 임명'의 반면교사.",
-    ratings: [["역사적 중요도", 45], ["통화정책 효과", 28], ["독립성 수호", 20]]
-  },
-  {
-    name: "매리너 에클스 (Marriner Eccles)",
-    term: "1934–1948 (14년)", num: "4대",
-    color: "c1", tag: "뉴딜·2차대전", tagColor: "c1t",
-    env: "대공황 극복기, 루스벨트 뉴딜 정책과 맞물린 재정·통화 확장 국면. 2차 세계대전 발발로 전시 경제 전환. 전후 인플레이션 압력 고조.",
-    policy: "재정지출 확대와 통화완화의 결합을 이론화한 '에클스 원칙' 제시. 연준의 독립적 통화정책 역할 강화 주장. 국채 수익률 상한 설정(전시 재정 지원). 1935년 연준법 개정을 통해 FOMC 권한 집중화.",
-    achiev: "근대적 연준 조직 체계 정비. 케인스적 통화·재정 협조 틀 마련. 단, 전후 재무부에 국채 수익률 고정 정책을 강요당하며 연준 독립성 훼손 경험.",
-    eval: "뉴딜 시대의 설계자. 연준 근대화 공헌은 높이 평가되나, 재무부 종속 문제로 임기 말 영향력 약화.",
-    ratings: [["역사적 중요도", 82], ["통화정책 효과", 68], ["독립성 수호", 52]]
-  },
-  {
-    name: "윌리엄 맥체스니 마틴 (William McChesney Martin)",
-    term: "1951–1970 (19년)", num: "5대",
-    color: "c2", tag: "전후 황금기", tagColor: "c2t",
-    env: "한국전쟁 후 전후 호황기(1950–60년대). 아이젠하워·케네디·존슨·닉슨 4개 행정부 역임. 베트남전 전비 지출로 인한 인플레이션 태동. 브레튼우즈 체제 균열 시작.",
-    policy: "'파티가 무르익을 때 펀치볼을 치워라' 원칙으로 선제적 긴축 명언화. 재무부로부터 연준 독립성 회복(1951년 재무부-연준 어코드 이후). 여러 차례 기준금리 인상으로 인플레이션 억제. 1965년 베트남 전비 팽창 시기 긴축 주장했으나 정치적 압력에 일부 굴복.",
-    achiev: "가장 긴 재임 기간(19년) 중 미국 경제 황금기 수호. 연준 독립성 제도화. 다만 1960년대 후반 인플레이션 씨앗을 완전히 제거하지 못했다는 비판.",
-    eval: "연준 최장수 의장이자 독립적 중앙은행 원칙의 상징. 정치적 압력을 버텨낸 의지가 높이 평가되나, 임기 말 대인플레이션 전주곡에 책임 일부 공유.",
-    ratings: [["역사적 중요도", 88], ["통화정책 효과", 78], ["독립성 수호", 86]]
-  },
-  {
-    name: "아서 번스 (Arthur Burns)",
-    term: "1970–1978 (8년)", num: "6대",
-    color: "c3", tag: "스태그플레이션", tagColor: "c3t",
-    env: "닉슨 쇼크(금태환 정지, 1971), 1차 오일쇼크(1973), 스태그플레이션(물가↑·성장↓ 동시). 워터게이트 사건. 닉슨·포드 행정부.",
-    policy: "닉슨의 정치적 압력 하에 선거 전 완화적 통화정책 유지. 임금·가격 통제(닉슨 행정부 주도) 지원. 금리 인상 타이밍 놓쳐 인플레이션 고착화. '파인 튜닝' 시도했으나 역부족.",
-    achiev: "부정적 사례로 더 유명. 중앙은행 독립성 훼손의 반면교사. 일부는 오일쇼크라는 외부 충격 탓으로 방어하기도 함.",
-    eval: "역대 최하위 평가를 받는 연준의장 중 하나. 정치적 독립성 부재와 대인플레이션 초래의 책임이 크다는 역사적 합의. 닉슨에게 '굴복한 의장'으로 기록.",
-    ratings: [["역사적 중요도", 72], ["통화정책 효과", 32], ["독립성 수호", 22]]
-  },
-  {
-    name: "폴 볼커 (Paul Volcker)",
-    term: "1979–1987 (8년)", num: "7대",
-    color: "c4", tag: "인플레이션 타도", tagColor: "c4t",
-    env: "2차 오일쇼크(1979), 극심한 스태그플레이션(물가 14%↑). 카터·레이건 행정부. 이란 인질 사태. 레이거노믹스(감세·재정확대) 충돌.",
-    policy: "기준금리 최고 20% 돌파(역대 최고). 통화량 목표제 채택. '볼커 충격'으로 1981–82년 심각한 경기침체 유발. 실업률 10% 상회. 그러나 1983년 이후 인플레이션 완전 진압 성공. 달러 초강세.",
-    achiev: "대인플레이션(Great Inflation) 종식. 중앙은행 신뢰성 회복. '인플레이션 파이터'의 대명사가 됨. 이후 연준 독립성·신뢰성의 황금기 기반 마련.",
-    eval: "역대 가장 위대한 연준의장으로 꼽힘. 단기적 고통(극심한 경기침체)을 감내한 용기와 원칙으로 장기 번영의 토대 구축. 독립성 수호의 교과서적 사례.",
-    ratings: [["역사적 중요도", 98], ["통화정책 효과", 95], ["독립성 수호", 97]]
-  },
-  {
-    name: "앨런 그린스펀 (Alan Greenspan)",
-    term: "1987–2006 (18.5년)", num: "8대",
-    color: "c5", tag: "대완화·IT버블", tagColor: "c5t",
-    env: "블랙먼데이(1987), 냉전 종식, 걸프전, IT 붐·닷컴버블, 아시아 금융위기(1997), 러시아 디폴트, LTCM 사태, 9/11, 엔론 사태, 주택버블 태동. 레이건~부시2 5개 행정부.",
-    policy: "블랙먼데이 직후 유동성 신속 공급. '신중한' 금리 조정으로 대완화(Great Moderation) 주도. '그린스펀 풋'(위기 시 금리 인하 보험) 개념 확립. IT 버블 시기 과도하게 낙관적 판단. 9/11 이후 초저금리 유지로 주택버블 씨앗.",
-    achiev: "18.5년 재임 중 경기 황금기(1990년대 장기 팽창). '마에스트로'로 칭송. 그러나 금융규제 완화 방치, 서브프라임 위기 기여로 사후 평가 급락.",
-    eval: "생전 최고 평가 후 사후 재평가로 추락한 대표 사례. 금융위기 후 자신의 세계관(금융 자기규제)에 '결함'을 인정. 대완화의 공로와 금융위기 기여 사이에서 절충된 평가.",
-    ratings: [["역사적 중요도", 92], ["통화정책 효과", 72], ["독립성 수호", 80]]
-  },
-  {
-    name: "벤 버냉키 (Ben Bernanke)",
-    term: "2006–2014 (8년)", num: "9대",
-    color: "c6", tag: "글로벌 금융위기", tagColor: "c6t",
-    env: "서브프라임 모기지 붕괴, 리먼브라더스 파산(2008), 글로벌 금융위기, 대침체(Great Recession). 오바마 행정부. 유럽 재정위기. QE 시대 개막.",
-    policy: "제로금리(ZIRP) 도입. 양적완화(QE1·2·3) 전례 없는 규모 실행. 은행 긴급 구제(AIG, 베어스턴스). '헬리콥터 벤' 별명(디플레이션 공포 대응). 포워드 가이던스 도구화. 2013년 '테이퍼 탠트럼' 발생(QE 축소 발표 후 시장 충격).",
-    achiev: "대공황 수준의 위기를 대공황으로 전환되지 않도록 방어. 2022년 노벨경제학상 수상(금융위기 연구 공로). 비전통적 통화정책 도구의 제도화.",
-    eval: "위기 대응에선 거의 만장일치 호평. 단, 위기 전 그린스펀의 방임 정책을 충분히 경계하지 못했다는 비판도 있음. 역대 가장 학술적인 의장.",
-    ratings: [["역사적 중요도", 94], ["통화정책 효과", 88], ["독립성 수호", 84]]
-  },
-  {
-    name: "재닛 옐런 (Janet Yellen)",
-    term: "2014–2018 (4년)", num: "10대",
-    color: "c7", tag: "정상화·첫 여성의장", tagColor: "c7t",
-    env: "글로벌 금융위기 후 경기 회복기. 양적완화 축소 및 금리 정상화 국면. 실업률 사상 최저 수준 회복. 트럼프 당선(2016). 유럽·중국 리스크. 암호화폐 부상.",
-    policy: "2015년 12월 첫 금리 인상(9년 만). 점진적 금리 정상화('데이터 의존적' 접근). 고용 극대화에 집중한 비둘기파 성향. 트럼프에 의해 연임 불발.",
-    achiev: "연준 역사상 최초 여성 의장. 금융위기 후 연착륙(soft landing) 성공적 관리. 이후 재무장관(바이든 행정부) 역임. 과도한 긴축 없이 경기 회복 완성.",
-    eval: "호평이 우세. 신중하고 데이터 중심적인 통화정책으로 경기 회복기를 안정적으로 통과. '노동시장 중시' 비둘기 의장의 긍정적 모델.",
-    ratings: [["역사적 중요도", 82], ["통화정책 효과", 84], ["독립성 수호", 86]]
-  },
-  {
-    name: "제롬 파월 (Jerome Powell)",
-    term: "2018–현재", num: "11대",
-    color: "c8", tag: "팬데믹·인플레이션", tagColor: "c3t",
-    env: "미중 무역전쟁, COVID-19 팬데믹(2020), 유례없는 재정·통화 확장, 공급망 붕괴로 40년 만의 인플레이션(2022년 9%), 러시아-우크라이나 전쟁, 실리콘밸리은행 파산(2023), 트럼프의 연임 압박.",
-    policy: "2020년 팬데믹 대응: 제로금리 + 무제한 QE + 새로운 기업어음 매입 등. 2022–2023년 역대 최고 속도 금리 인상(0→5.25%, 11회 연속). 평균물가목표제(AIT) 도입. '일시적 인플레이션' 오판 후 신속 전환으로 신뢰 회복.",
-    achiev: "팬데믹 충격 최소화. 2024년 연착륙 성공(물가 안정 + 고용 유지). 트럼프의 해임 압박에도 법적·제도적 독립성 수호. 2025년에도 재임.",
-    eval: "재임 중이므로 평가 유동적. '일시적 인플레이션' 실수에도 신속한 정책 전환으로 신뢰 회복. 연착륙 성공 시 역대 최고 평가 가능. 독립성 수호 의지는 높이 평가.",
-    ratings: [["역사적 중요도", 88], ["통화정책 효과", 80], ["독립성 수호", 90]]
-  }
-];
-
-function toggle(i) {
-  const card = document.getElementById('card-' + i);
-  card.classList.toggle('open');
-}
-
-const container = document.getElementById('chairs-container');
-
-chairs.forEach((c, i) => {
-  const card = document.createElement('div');
-  card.className = 'chair-card';
-  card.id = 'card-' + i;
-
-  const bars = c.ratings.map(([label, score]) => {
-    const color = score >= 85 ? '#059669' : score >= 65 ? '#D97706' : '#DC2626';
-    return `
-      <div class="rating-bar">
-        <span class="bar-label">${label}</span>
-        <div class="bar-track">
-          <div class="bar-fill" style="width:${score}%; background:${color}"></div>
-        </div>
-        <span class="bar-score">${score} / 100</span>
-      </div>`;
-  }).join('');
-
-  card.innerHTML = `
-    <div class="chair-header" onclick="toggle(${i})">
-      <div class="era-dot ${c.color}">${c.num}</div>
-      <div class="chair-meta">
-        <div class="chair-name">${c.name}</div>
-        <div class="chair-term">${c.term}</div>
-      </div>
-      <span class="chair-tag ${c.tagColor}">${c.tag}</span>
-      <span class="chevron">⌄</span>
-    </div>
-    <div class="chair-body">
-      <div class="section-label">대내외 환경</div>
-      <div class="body-text">${c.env}</div>
-      <div class="section-label">주요 정책</div>
-      <div class="body-text">${c.policy}</div>
-      <div class="section-label">주요 업적</div>
-      <div class="body-text">${c.achiev}</div>
-      <div class="section-label">역사적 평가</div>
-      <div class="body-text">${c.eval}</div>
-      <div class="section-label">평가 지표 (100점 기준)</div>
-      ${bars}
-    </div>`;
-
-  container.appendChild(card);
-});
-</script>
 </body>
 </html>
